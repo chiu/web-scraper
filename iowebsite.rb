@@ -1,10 +1,7 @@
 #iowebsite.rb
-require 'nokogiri'
+
 
 class IOWebsite
-
-
-  
 
 
   class << self
@@ -15,12 +12,7 @@ class IOWebsite
     end
 
 
-
-
-
   end
-
-
 
 
 

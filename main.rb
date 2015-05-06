@@ -1,20 +1,29 @@
 require_relative 'post'
 require_relative 'iowebsite'
-require 'nokogiri'
+require_relative 'comment'
 
+
+require 'rubygems'
+require 'nokogiri'         
+      
+
+
+
+# doc = IOWebsite.open_html
+
+
+
+# test_post = Post.new(IOWebsite.open_html)
+
+
+# #puts test_post.comments.inspect
 
 
 doc = IOWebsite.open_html
+Comment.import_html_file(doc)
+Comment.format_comments
+puts Comment.format_comments
 
 
-#puts doc.inspect
+#puts Comment.import_html_file(doc).inspect
 
-
-
-test_post = Post.new("wow", "wow.com", 1, 88, IOWebsite.open_html)
-#puts test_post.inspect
-
-#puts test_post.comments(doc)
-
-
-puts test_post.comments[3].inspect
