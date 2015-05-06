@@ -1,5 +1,5 @@
 #post.rb
-require 'nokogiri'
+#require 'nokogiri'
 
 
 
@@ -34,8 +34,7 @@ class Post
 
 
   def comments
-     @html_file.search('.comment > font:first-child').map { |font| font.inner_text}
-
+     @html_file.search('.comhead')
   end
 
 

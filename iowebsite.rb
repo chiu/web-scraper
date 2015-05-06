@@ -4,7 +4,7 @@ require 'nokogiri'
 class IOWebsite
 
 
-  @@comment_array
+  
 
 
   class << self
