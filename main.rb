@@ -1,5 +1,6 @@
 require_relative 'post'
 require_relative 'iowebsite'
+require 'nokogiri'
 
 
 
