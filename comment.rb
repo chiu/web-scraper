@@ -12,6 +12,7 @@ class Comment
 
   @@unformatted_comments = []
   @@formatted_comments = []
+  @@content_array = []
 
   def initialize(primary_key, username , date, content)
     @username = username
@@ -48,49 +49,45 @@ class Comment
   ##class methods:
   class << self
 
+
+    #html ok don't change
+
     def import_html_file(html_file)
 
-      # @@unformatted_comments = html_file.search('.comment > font')
-      #       @@unformatted_comments = html_file.search('.comment > font')
-      #           @@unformatted_comments = html_file.search('.comment > font')
-      #@@unformatted_comments = html_file.search('.comment > font')
-        @@unformatted_comments = html_file.search('.comhead')
+      @@unformatted_comments = html_file.search('.comment > font')
       return @@unformatted_comments
 
     end
 
-    def format_comments
-      name_array = []
-      #binding.pry
-      @@unformatted_comments.each do |unformatted_comment|
+#format comments ok do not change; scrape content
+def scrape_content
+  
 
-        @@formatted_comments << scrape_content(unformatted_comment)
-        @@formatted_comments << "-------------"
+  @@unformatted_comments.each do |unformatted_comment|
 
-
-      end
-
-      return @@formatted_comments
-    end
-
-
-
-
-
-    def scrape_content(comment_block)
-      comment_block
-    end
-
-    def scrape_name(comment_block)
-      # doc.search('.comhead > a:first-child').map do |element|
-      #   element.inner_text
-      comment_block.search('.a').map do |element|
-        element.inner_text
-        #return "hi"
-      end
-    end
-
+    @@formatted_comments << unformatted_comment.inner_text
+    @@formatted_comments << "-------------"
 
   end
+
+  return @@formatted_comments
+end
+
+
+
+
+def scrape_names(html_file)
+  name_array = []
+  name_array = html_file.search('.comhead > a:first-child').inner_text
+
+ end
+
+
+
+
+
+
+
+end
 
 end
