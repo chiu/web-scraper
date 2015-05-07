@@ -8,47 +8,37 @@ class Comment
 
   attr_accessor :primary_key, :username, :date, :content
 
-
-
   @@unformatted_comments = []
   @@formatted_comments = []
   @@content_array = []
 
-  def initialize(primary_key, username , date, content)
+  def initialize(primary_key, username, date, content)
+    @primary_key = primary_key
     @username = username
     @date = date
     @content = content
   end
 
   def return_unformatted_contents
-
     @@unformatted_comments
   end
-
-
 
   def return_formatted_contents
     @@formatted_comments
 
   end
 
-
-
-
-  def to_s
+  def print_comment
     #TO DO: outputs scraped comment in user friendly format.
+    ultimate_string = "primary key: #{primary_key}\n"
+    ultimate_string  << "username: #{self.username}\n"
+    ultimate_string << "date: #{date}\n"
+    ultimate_string <<  "content: #{content}\n"
   end
-
-
-  def scrape_date
-  end
-
-
 
 
   ##class methods:
   class << self
-
 
     #html ok don't change
 
@@ -69,8 +59,6 @@ def scrape_content
 end
 
 
-
-
 def scrape_names(html_file)
   name_array = []
   formatted_names = []
@@ -85,7 +73,6 @@ def scrape_names(html_file)
 end
 
 
-
 def scrape_dates(html_file)
   date_array = []
   formatted_dates = []
@@ -96,10 +83,8 @@ def scrape_dates(html_file)
     #formatted_names << "---------"
   end
 #  puts formatted_dates
-  return formatted_dates
+return formatted_dates
 end
-
-
 
 
 end
