@@ -1,11 +1,14 @@
 #comment.rb
 
 require 'nokogiri'    
+#require 'pry'
 
 
 class Comment
 
   attr_accessor :primary_key, :username, :date, :content
+
+
 
   @@unformatted_comments = []
   @@formatted_comments = []
@@ -16,6 +19,21 @@ class Comment
     @content = content
   end
 
+  def return_unformatted_contents
+
+    @@unformatted_comments
+  end
+
+
+
+  def return_formatted_contents
+    @@formatted_comments
+
+  end
+
+
+
+
   def to_s
     #TO DO: outputs scraped comment in user friendly format.
   end
@@ -24,8 +42,7 @@ class Comment
   def scrape_date
   end
 
-  def scrape_content
-  end
+
 
 
   ##class methods:
@@ -33,22 +50,32 @@ class Comment
 
     def import_html_file(html_file)
       #@@unformatted_comments = html_file.search('.comhead')
-       @@unformatted_comments = html_file.search('.comment > font').inner_text
+      @@unformatted_comments = html_file.search('.comment > font')
        #puts @@unformatted_comments
-      return @@unformatted_comments
+       return @@unformatted_comments
 
+     end
+
+     def format_comments
+      name_array = []
+      #binding.pry
+      @@unformatted_comments.each do |unformatted_comment|
+       
+      @@formatted_comments << scrape_content(unformatted_comment)
+      @@formatted_comments << "-------------"
+
+
+      end
+
+      return @@formatted_comments
     end
 
-    def format_comments
-      name_array = []
-      @@unformatted_comments.each do |comment|
-        name_temp = scrape_name(comment)
-        name_array << name_temp
-        # age_temp = scrape_age(comment)
-        # content_temp = scrape_content(comment)
-        # @@formatted_comments << Comment.new(name_temp, age_temp, comment_temp)
-        # puts @@formatted_comments
-      end
+
+
+
+
+    def scrape_content(comment_block)
+        comment_block.inner_text
     end
 
     def scrape_name(comment_block)
