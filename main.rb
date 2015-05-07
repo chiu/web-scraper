@@ -13,10 +13,13 @@ require 'nokogiri'
 
 doc = IOWebsite.open_html
 Comment.import_html_file(doc)
-#puts Comment.scrape_content
+puts Comment.scrape_content
 
 
-puts Comment.scrape_names(doc)
+Comment.scrape_names(doc)
+
+
+Comment.scrape_dates(doc)
 
 
 
