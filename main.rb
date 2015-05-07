@@ -11,19 +11,23 @@ require 'nokogiri'
 
 
 
-doc = IOWebsite.open_html
-Comment.import_html_file(doc)
 
 
 
-content_stuff = Comment.scrape_content
-content_stuff.length
+def return_all_comments
+
+  doc = IOWebsite.open_html
+
+  Comment.import_html_file(doc)
+
+  content_stuff = Comment.scrape_content
+#content_stuff.length
 
 name_stuff = Comment.scrape_names(doc)
-name_stuff.length
+#name_stuff.length
 
 date_stuff = Comment.scrape_dates(doc)
-date_stuff.length
+#date_stuff.length
 
 
 print_length = [content_stuff.length, name_stuff.length, date_stuff.length].min
@@ -51,8 +55,15 @@ end
 
 
 
-puts ultimate_comment_array[1].print_comment
+#puts ultimate_comment_array[1].print_comment
+
+return ultimate_comment_array
+
+end
 
 
 
+return_all_comments.each do |comment|
+  puts comment.return_comment_string
 
+end

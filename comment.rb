@@ -28,12 +28,14 @@ class Comment
 
   end
 
-  def print_comment
+  def return_comment_string
     #TO DO: outputs scraped comment in user friendly format.
-    ultimate_string = "primary key: #{primary_key}\n"
+    ultimate_string = "COMMENT START============\n"
+    ultimate_string << "primary key: #{primary_key}\n"
     ultimate_string  << "username: #{self.username}\n"
     ultimate_string << "date: #{date}\n"
     ultimate_string <<  "content: #{content}\n"
+    ultimate_string << "COMMENT END ==============\n"
   end
 
 
