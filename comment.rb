@@ -63,7 +63,7 @@ class Comment
 def scrape_content
   @@unformatted_comments.each do |unformatted_comment|
     @@formatted_comments << unformatted_comment.inner_text
-    @@formatted_comments << "-------------"
+    #@@formatted_comments << "-------------"
   end
   return @@formatted_comments
 end
@@ -75,12 +75,12 @@ def scrape_names(html_file)
   name_array = []
   formatted_names = []
   name_array = html_file.search('.comhead > a:first-child')
-  puts name_array.length
+  #puts name_array.length
   name_array.each do |name|
     formatted_names << name.inner_text
     #formatted_names << "---------"
   end
-  puts formatted_names
+  #puts formatted_names
   return formatted_names
 end
 
@@ -90,12 +90,12 @@ def scrape_dates(html_file)
   date_array = []
   formatted_dates = []
   date_array = html_file.search('.comhead > a:nth-child(2)')
-  puts date_array.length
+  #puts date_array.length
   date_array.each do |date|
     formatted_dates << date.inner_text
     #formatted_names << "---------"
   end
-  puts formatted_dates
+#  puts formatted_dates
   return formatted_dates
 end
 
