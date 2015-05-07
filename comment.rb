@@ -49,20 +49,23 @@ class Comment
   class << self
 
     def import_html_file(html_file)
-      #@@unformatted_comments = html_file.search('.comhead')
-      @@unformatted_comments = html_file.search('.comment > font')
-       #puts @@unformatted_comments
-       return @@unformatted_comments
 
-     end
+      # @@unformatted_comments = html_file.search('.comment > font')
+      #       @@unformatted_comments = html_file.search('.comment > font')
+      #           @@unformatted_comments = html_file.search('.comment > font')
+      #@@unformatted_comments = html_file.search('.comment > font')
+        @@unformatted_comments = html_file.search('.comhead')
+      return @@unformatted_comments
 
-     def format_comments
+    end
+
+    def format_comments
       name_array = []
       #binding.pry
       @@unformatted_comments.each do |unformatted_comment|
-       
-      @@formatted_comments << scrape_content(unformatted_comment)
-      @@formatted_comments << "-------------"
+
+        @@formatted_comments << scrape_content(unformatted_comment)
+        @@formatted_comments << "-------------"
 
 
       end
@@ -75,7 +78,7 @@ class Comment
 
 
     def scrape_content(comment_block)
-        comment_block.inner_text
+      comment_block
     end
 
     def scrape_name(comment_block)
