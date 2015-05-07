@@ -21,9 +21,9 @@ require 'nokogiri'
 
 doc = IOWebsite.open_html
 Comment.import_html_file(doc)
-Comment.format_comments
-puts Comment.format_comments
+#Comment.format_comments
+#puts Comment.format_comments
 
 
-#puts Comment.import_html_file(doc).inspect
+puts Comment.import_html_file(doc)[1..5]
 
