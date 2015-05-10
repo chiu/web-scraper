@@ -11,7 +11,7 @@ require 'nokogiri'
 
 
 
-
+#make the return all comments its own class called parse or parser. 
 
 
 def return_all_comments
